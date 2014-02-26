@@ -1,0 +1,3 @@
+--ignore-dir=doxygen
+--type-add 
+PHP=.module

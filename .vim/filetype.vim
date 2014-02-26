@@ -1,0 +1,10 @@
+autocmd FileType make setlocal list 
+".module filetype
+if exists("did_load_filetypes")
+	finish
+endif
+augroup filetypedetect
+	au! BufRead,BufNewFile *.module		setfiletype php
+	au! BufRead,BufNewFile *.mpl        setfiletype perl
+augroup END
+
