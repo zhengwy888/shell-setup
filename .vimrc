@@ -58,6 +58,14 @@ set showmatch
 " How many tenths of a second to blink when matching brackets
 set mat=2
 
+" UTF8 support
+if has("multi_byte")
+  if &termencoding == ""
+    let &termencoding = &encoding
+  endif
+  set encoding=utf-8                     " better default than latin1
+  setglobal fileencoding=utf-8           " change default file encoding when writing new files
+endif
 
 " 1 tab == 4 spaces
 set shiftwidth=4
