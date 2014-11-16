@@ -2,11 +2,6 @@
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set background=dark
-"check if I am using PuTTY or VNC
-if $DISPLAY =~ "my_unix_box" && v:version >= 700 && empty($TMUX)
-    set t_Co=256
-    colorscheme solarized
-endif
 
 " Sets how many lines of history VIM has to remember
 set history=700
