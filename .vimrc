@@ -150,5 +150,8 @@ let g:CommandTCancelMap=['<ESC>','<C-c>']
 "let g:CommandTAcceptSelectionTabMap = '<CR>'
 "let g:CommandTSelectNextMap='<Down>'
 
-" NERDtree
-map <Leader>n <plug>NERDTreeTabsToggle<CR>
+
+"CtrlP
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_max_depth=20
