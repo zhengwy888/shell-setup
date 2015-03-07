@@ -38,6 +38,8 @@ set ruler
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
+" extend keyword to include dash
+set iskeyword+=-
 
 " Ignore case when searching
 set ignorecase
@@ -165,3 +167,9 @@ let g:miniBufExplStatusLineText = 0
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_max_depth=20
+
+" Supertab
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabLongestEnhanced = 1
+set completeopt=longest,menuone
+set highlight Pmenu ctermbg=darkcyan
