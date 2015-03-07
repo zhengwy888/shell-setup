@@ -2,7 +2,7 @@
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set background=dark
-
+colorscheme smyck 
 " Sets how many lines of history VIM has to remember
 set history=700
 
@@ -172,4 +172,4 @@ let g:ctrlp_max_depth=20
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabLongestEnhanced = 1
 set completeopt=longest,menuone
-set highlight Pmenu ctermbg=darkcyan
+highlight Pmenu ctermbg=darkcyan
