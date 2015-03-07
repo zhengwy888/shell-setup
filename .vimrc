@@ -20,6 +20,9 @@ autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bu
 
 " Set to auto read when a file is changed from the outside
 set autoread
+" intuitive splitting
+set splitbelow
+set splitright
 
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
@@ -109,13 +112,23 @@ augroup END
 
 
 " Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+map <C-j> <C-W>j<C-W>_<C-W><Bar>
+map <C-k> <C-W>k<C-W>_<C-W><Bar>
+map <C-h> <C-W>h<C-W>_<C-W><Bar>
+map <C-l> <C-W>l<C-W>_<C-W><Bar>
+" automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
+" zoom a vim pane, <C-w>= to re-balance
+nnoremap <C-W>- :wincmd _<cr>:wincmd \|<cr>
 
 nnoremap <CR> :noh<CR><CR>
 
+if v:version >= 700
+    set undodir=$HOME/.vim/undo
+    set undofile
+    set undolevels=100
+    set undoreload=10000
+endif
 
 " Map key to toggle opt
 function MapToggle(key, opt)
@@ -143,13 +156,10 @@ set pastetoggle=<F12>
 
 command PE execute "!p4 edit %"
 
-" command-t options
-let g:CommandTCancelMap=['<ESC>','<C-c>']
-"let g:CommandTAcceptSelectionMap = '<C-t>'
-"let g:CommandTAcceptSelectionVSplitMap='<CR>'
-"let g:CommandTAcceptSelectionTabMap = '<CR>'
-"let g:CommandTSelectNextMap='<Down>'
-
+"MiniBufferExplorer
+let g:miniBufExplBRSplit = 0
+set hidden
+let g:miniBufExplStatusLineText = 0
 
 "CtrlP
 let g:ctrlp_show_hidden = 1
