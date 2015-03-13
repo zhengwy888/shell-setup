@@ -114,10 +114,10 @@ augroup END
 
 
 " Smart way to move between windows
-map <C-j> <C-W>j<C-W>_<C-W><Bar>
-map <C-k> <C-W>k<C-W>_<C-W><Bar>
-map <C-h> <C-W>h<C-W>_<C-W><Bar>
-map <C-l> <C-W>l<C-W>_<C-W><Bar>
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
 " zoom a vim pane, <C-w>= to re-balance
@@ -125,7 +125,7 @@ nnoremap <C-W>- :wincmd _<cr>:wincmd \|<cr>
 
 nnoremap <CR> :noh<CR><CR>
 
-if v:version >= 700
+if v:version >= 730
     set undodir=$HOME/.vim/undo
     set undofile
     set undolevels=100
@@ -170,6 +170,7 @@ let g:ctrlp_max_depth=20
 
 " Supertab
 let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
 let g:SuperTabLongestEnhanced = 1
 set completeopt=longest,menuone
 highlight Pmenu ctermbg=darkcyan
