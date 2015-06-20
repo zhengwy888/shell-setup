@@ -1,4 +1,3 @@
-autocmd FileType make setlocal list 
 ".module filetype
 if exists("did_load_filetypes")
 	finish
