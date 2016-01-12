@@ -1,3 +1,4 @@
+" autocmd FileType make setlocal list 
 ".module filetype
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 
