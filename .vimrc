@@ -24,6 +24,9 @@ set autoread
 set splitbelow
 set splitright
 
+set cindent
+set cinoptions+=g0
+
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
 

@@ -1,4 +1,6 @@
 ".module filetype
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+
 if exists("did_load_filetypes")
 	finish
 endif
