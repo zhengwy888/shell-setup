@@ -18,6 +18,7 @@ syntax enable
 " filetype indent on
 autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
 autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bundle/plugin/closetag.vim
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete tabstop=2 sw=2 expandtab
 
 " Set to auto read when a file is changed from the outside
 set autoread
