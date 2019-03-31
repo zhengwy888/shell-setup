@@ -2,6 +2,7 @@
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set background=dark
+set t_Co=256
 colorscheme smyck 
 " Sets how many lines of history VIM has to remember
 set history=700
@@ -17,6 +18,7 @@ syntax enable
 " filetype indent on
 autocmd FileType html,htmldjango,jinjahtml,eruby,mako let b:closetag_html_style=1
 autocmd FileType html,xhtml,xml,htmldjango,jinjahtml,eruby,mako source ~/.vim/bundle/plugin/closetag.vim
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete tabstop=2 sw=2 expandtab
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -29,10 +31,6 @@ set cinoptions+=g0
 
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
-
-" ctags
-set tags=./tags;/
-"map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " Height of the command bar
 " set cmdheight=2
@@ -87,21 +85,21 @@ set viminfo='10,\"100,:20,%,n~/.viminfo
 
 " Protect large files from sourcing and other overhead.
 " Files become read only
-if !exists("my_auto_commands_loaded")
-  let my_auto_commands_loaded = 1
-  " Large files are > 10M
-  " Set options:
-  " eventignore+=FileType (no syntax highlighting etc
-  " assumes FileType always on)
-  " noswapfile (save copy of file)
-  " bufhidden=unload (save memory when other file is viewed)
-  " buftype=nowritefile (is read-only)
-  " undolevels=-1 (no undo possible)
-  let g:LargeFile = 1024 * 1024 * 10
-  augroup LargeFile
-    autocmd BufReadPre * let f=expand("<afile>") | if getfsize(f) > g:LargeFile | set eventignore+=FileType | setlocal noswapfile bufhidden=unload buftype=nowrite undolevels=-1 | else | set eventignore-=FileType | endif
-    augroup END
-  endif
+"if !exists("my_auto_commands_loaded")
+"  let my_auto_commands_loaded = 1
+"  " Large files are > 10M
+"  " Set options:
+"  " eventignore+=FileType (no syntax highlighting etc
+"  " assumes FileType always on)
+"  " noswapfile (save copy of file)
+"  " bufhidden=unload (save memory when other file is viewed)
+"  " buftype=nowritefile (is read-only)
+"  " undolevels=-1 (no undo possible)
+"  let g:LargeFile = 1024 * 1024 * 10
+"  augroup LargeFile
+"    autocmd BufReadPre * let f=expand("<afile>") | if getfsize(f) > g:LargeFile | set eventignore+=FileType | setlocal noswapfile bufhidden=unload buftype=nowrite undolevels=-1 | else | set eventignore-=FileType | endif
+"    augroup END
+"  endif
 
 function! ResCur()
   if line("'\"") <= line("$")
@@ -161,19 +159,17 @@ set pastetoggle=<F12>
 
 command PE execute "!p4 edit %"
 
-"MiniBufferExplorer
-let g:miniBufExplBRSplit = 0
-set hidden
-let g:miniBufExplStatusLineText = 0
-
 "CtrlP
-let g:ctrlp_show_hidden = 1
+let g:ctrlp_show_hidden = 0
 let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_max_depth=20
+let g:ctrlp_max_depth=50
+let g:ctrlp_max_files=0
+let g:ctrlp_lazy_update = 100
 
 " Supertab
+set complete-=i "remove included file scanning
 let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+let g:SuperTabContextTextOmniPrecedence = ['&completefunc','&omnifunc']
 let g:SuperTabLongestEnhanced = 1
 set completeopt=longest,menuone
 highlight Pmenu ctermbg=darkcyan
